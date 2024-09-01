@@ -1,0 +1,13 @@
+{
+  "title": "Dashibodi",
+  "welcome": {
+    "description": "Entasis cha kweli chenye React, Chakra UI, React Query & React Hook Form",
+    "title": "Karibu kwenye Entasis [web]",
+    "author": "— Kutoka kwa <strong>Timu ya BearStudio</strong>"
+  },
+  "links": {
+    "github": "Github hazina",
+    "openIssue": "Fungua njia ya kutoka",
+    "documentation": "nyaraka"
+  }
+}
