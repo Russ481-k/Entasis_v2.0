@@ -43,6 +43,7 @@ import {
 } from 'react-icons/lu';
 
 import { Icon } from '@/components/Icons';
+import TradingView from '@/components/TradingView';
 import { useAdminLayoutContext } from '@/features/admin/AdminLayout';
 import { LinkAdmin } from '@/features/admin/LinkAdmin';
 import { ADMIN_PATH } from '@/features/admin/constants';
@@ -56,9 +57,6 @@ const AdminNavBarMainMenu = ({ ...rest }: StackProps) => {
   const { t } = useTranslation(['admin']);
   return (
     <Stack direction="row" spacing="1" {...rest}>
-      <AdminNavBarMainMenuItem href="/dashboard">
-        {t('admin:layout.mainMenu.dashboard')}
-      </AdminNavBarMainMenuItem>
       <AdminNavBarMainMenuItem href="/monitoring">
         {t('admin:layout.mainMenu.monitoring')}
       </AdminNavBarMainMenuItem>
@@ -184,6 +182,9 @@ export const AdminNavBar = (props: BoxProps) => {
         <AdminNavBarAccountMenu />
       </Flex>
       {showDrawer && <AdminNavBarDrawer />}
+      <Flex gap={2} mb={2}>
+        <TradingView />
+      </Flex>
     </Box>
   );
 };

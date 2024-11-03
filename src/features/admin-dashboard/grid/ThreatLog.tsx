@@ -16,13 +16,9 @@ import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { AgGridReact } from 'ag-grid-react';
 import dayjs from 'dayjs';
 
-import { trpc } from '@/lib/trpc/client';
-
 import { zLogs } from '../../monitoring/schemas';
 
 export const DashboardStaticsThreatLog = () => {
-  const getSystemLog = trpc.dashboard.getSystemLog.useInfiniteQuery({});
-
   const { colorMode } = useColorMode();
 
   const gridRef = useRef<AgGridReact<ColDef<zLogs>[]>>(null);
@@ -35,18 +31,10 @@ export const DashboardStaticsThreatLog = () => {
       borderColor={colorMode === 'light' ? 'gray.200' : 'whiteAlpha.300'}
       colSpan={{
         base: 1,
-        sm: 1,
-        md: 1,
-        lg: 1,
-        xl: 3,
       }}
       overflow="hidden"
       height={{
-        base: '400px',
-        sm: '400px',
-        md: '400px',
-        lg: '400px',
-        xl: '400px',
+        base: '600px',
       }}
     >
       <Flex flexDir="column">
@@ -69,13 +57,20 @@ export const DashboardStaticsThreatLog = () => {
                 }
                 style={{
                   width: '100%',
-                  height: '352px',
+                  height: '600px',
                   zIndex: 0,
                 }}
               >
                 <AgGridReact
                   ref={gridRef}
-                  rowData={getSystemLog.data?.pages[0]?.recent20Rows ?? []}
+                  rowData={[
+                    {
+                      receiveTime: '',
+                      deviceName: '',
+                      serial: '',
+                      description: '',
+                    },
+                  ]}
                   columnDefs={[
                     {
                       headerName: 'Receive Time',
@@ -120,7 +115,7 @@ export const DashboardStaticsThreatLog = () => {
                 }
                 style={{
                   width: '100%',
-                  height: '352px',
+                  height: '600px',
                   zIndex: 0,
                   borderRadius: 0,
                   borderWidth: 0,
@@ -128,7 +123,14 @@ export const DashboardStaticsThreatLog = () => {
               >
                 <AgGridReact
                   ref={gridRef}
-                  rowData={getSystemLog.data?.pages[0]?.critical7Days ?? []}
+                  rowData={[
+                    {
+                      receiveTime: '',
+                      deviceName: '',
+                      serial: '',
+                      description: '',
+                    },
+                  ]}
                   columnDefs={[
                     {
                       headerName: 'Receive Time',

@@ -9,9 +9,6 @@ import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { trpc } from '@/lib/trpc/client';
 
 export const DashboardStaticsCollectionsCount = () => {
-  const getCountsPerSec = trpc.dashboard.getCountsPerSec.useInfiniteQuery({});
-  const getCountsPerDay = trpc.dashboard.getCountsPerDay.useInfiniteQuery({});
-
   const { colorMode } = useColorMode();
 
   const AgChartsThemeChanged = ({ options }: { options: AgChartOptions }) => {
@@ -28,7 +25,7 @@ export const DashboardStaticsCollectionsCount = () => {
       title: {
         text: 'Collections Counts Per Second',
       },
-      data: getCountsPerSec.data?.pages[0],
+      data: [],
       series: [
         {
           type: 'line',
@@ -76,7 +73,7 @@ export const DashboardStaticsCollectionsCount = () => {
       ],
       height: 400,
     }),
-    [getCountsPerSec]
+    []
   );
 
   const countsPerDay = useMemo<AgChartOptions>(
@@ -84,7 +81,7 @@ export const DashboardStaticsCollectionsCount = () => {
       title: {
         text: 'Collections Counts Per Day',
       },
-      data: getCountsPerDay.data?.pages[0],
+      data: [],
       series: [
         {
           type: 'line',
@@ -98,7 +95,7 @@ export const DashboardStaticsCollectionsCount = () => {
       ],
       height: 400,
     }),
-    [getCountsPerDay]
+    []
   );
 
   return (
